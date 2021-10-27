@@ -12,8 +12,8 @@
         "php": "7.*",
         "ext-curl": "*",
         "ext-json": "*",
-        "enqueue/amqp-lib": "^0.10.9",
-        "pda/pheanstalk": "^4.0"
+        "pda/pheanstalk": "^4.0",
+        "enqueue/amqp-lib": "0.10.1"
     },
 
     "require-dev": {
