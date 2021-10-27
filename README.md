@@ -1,5 +1,5 @@
 # phpmq
-PHP队列集合（rbbitmq、redis、beanstalk）
+PHP队列集合（rabbitmq、redis、beanstalk）
 
 ### 安装
 
