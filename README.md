@@ -19,12 +19,14 @@ $config = [
 ];
 $queue = new Queue($config);
 //---发消息
-$job = new TestJob();
+$job = new \phpmq\tests\TestJob();
 $job->data = ['delay' => '5',];
 //直接发
 $queue->push($job);
 //延时发
 $queue->delay(1)->push($job);
+//遇到错误N秒重试发
+$queue->ttr(10)->push($job);
 //带routingKey发
 $queue->setRoutingKey('modify')->push($job);
 //其他参考源码
@@ -41,5 +43,22 @@ $queue->regRoutingKeyCallback('modify', function ($messageData) {
 
 ```php
 use phpmq\drivers\redis\Queue;
+$config = [
+    'host' => '127.0.0.1', 
+    'port' => 6379
+];
+$queue = new Queue($config);
+//---发消息
+$job = new \phpmq\tests\TestJob();
+$job->data = ['delay' => '5',];
+//直接发
+$queue->push($job);
+//延时发
+$queue->delay(1)->push($job);
+//遇到错误N秒重试发
+$queue->ttr(10)->push($job);
+//---监听
+//直接监听
+$queue->listen();
 
 ```

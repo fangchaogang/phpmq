@@ -389,14 +389,14 @@ class Queue extends BaseQueue
     protected function redeliver(AmqpMessage $message)
     {
         $attempt = $message->getProperty(self::ATTEMPT, 1);
-        $delay = $message->getProperty(self::DELAY, 0);
+        $ttr = $message->getProperty(self::TTR, 0);
 
         $newMessage = $this->context->createMessage($message->getBody(), $message->getProperties(), $message->getHeaders());
         $newMessage->setDeliveryMode($message->getDeliveryMode());
         $newMessage->setProperty(self::ATTEMPT, ++$attempt);
         $producer = $this->context->createProducer();
-        if ($delay) {
-            $producer->setDeliveryDelay($delay * 1000);
+        if ($ttr) {
+            $producer->setDeliveryDelay($ttr * 1000);
         }
 
         $producer->send(
