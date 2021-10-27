@@ -62,3 +62,27 @@ $queue->ttr(10)->push($job);
 $queue->listen();
 
 ```
+
+
+#### 使用beanstalk
+
+```php
+use phpmq\drivers\beanstalk\Queue;
+$config = [
+    'host'=>'150.158.185.89',
+];
+$queue = new Queue($config);
+//---发消息
+$job = new \phpmq\tests\TestJob();
+$job->data = ['delay' => '5',];
+//直接发
+$queue->push($job);
+//延时发
+$queue->delay(1)->push($job);
+//遇到错误N秒重试发
+$queue->ttr(10)->push($job);
+//---监听
+//直接监听
+$queue->listen();
+
+```

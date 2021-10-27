@@ -33,7 +33,13 @@ class Queue extends BaseQueue
     /**
      * @var string
      */
-    public $channel = 'queue';
+    public $queueName = 'queue';
+    /**
+     * @var string
+     */
+    private $channel;
+
+
 
     /**
      * @inheritdoc
@@ -47,6 +53,7 @@ class Queue extends BaseQueue
             'port' => $this->port,
             'database' => $this->database
         ]);
+        $this->channel = $this->queueName;
     }
 
     public function listen()

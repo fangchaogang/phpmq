@@ -10,7 +10,7 @@ class TestJob extends Job
 
     public function canRetry($attempt, \Throwable $error)
     {
-        if ($attempt >= 2) {
+        if ($attempt >= 3) {
             return false;
         }
         return  true;
