@@ -1,0 +1,37 @@
+{
+    "name": "fangchaogang/phpmq",
+    "description": "PHP MQ",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "fangchaogang",
+            "homepage": "https://github.com/fangchaogang"
+        }
+    ],
+    "require": {
+        "php": "7.*",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "enqueue/amqp-lib": "^0.10.9"
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "6.*"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "phpmq\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": { "phpmq\\tests\\" : "tests/" }
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://mirrors.aliyun.com/composer/"
+        }
+    }
+
+}

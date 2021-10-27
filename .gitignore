@@ -1,0 +1,14 @@
+.buildpath
+.project
+*.patch
+.DS_Store
+*.lock
+.phpunit*
+.php_cs.cache
+.phpstorm.meta.php
+/.idea
+/.git
+/.phpintel
+/.settings
+/nohup.out
+/vendor
